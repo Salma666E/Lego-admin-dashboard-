@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "AdminDashboard"
+  "defaultProject": "AdminDashboard",
+  "cli": {
+    "analytics": "3d382fca-fe58-454b-9bd8-133b2381f962"
+  }
 }
