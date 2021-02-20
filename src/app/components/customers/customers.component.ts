@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomersService } from 'src/app/Services/Customers/customers.service';
-import { ICustomer } from 'src/app/ViewModels/ICustomer';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { UsersService } from 'src/app/firebaseServices/User/users.service';
 
 @Component({
   selector: 'app-customers',
@@ -9,30 +10,27 @@ import { ICustomer } from 'src/app/ViewModels/ICustomer';
 })
 export class CustomersComponent implements OnInit {
 
-  customerList: ICustomer[];
-  constructor(private customerSrv:CustomersService) { }
+  customerList;
+  subscription: Subscription[] = [];
+
+  constructor(private customerSrv:UsersService) { }
 
   ngOnInit(): void {
-    this.customerSrv.getAllCustomers().subscribe(
-      (res)=>{
-        this.customerList=res
-      },
-      (err)=>{console.log(err)}
-    )
+    this.subscription.push(this.customerSrv.getUsers().subscribe(data => {
+      this.customerList = data.map(e => {
+        return { id: e.payload.doc.id, ...(e.payload.doc.data() as {}) };
+      })
+    }))
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.forEach(element => {
+      element.unsubscribe();
+    });
   }
 
   deleteCustomer(id) {
-    this.customerSrv.deleteCustomer(id).subscribe(
-      (resp)=>{
-        this.customerSrv.getAllCustomers().subscribe(
-          (res)=>{
-            this.customerList=res
-          },
-          (err)=>{console.log(err)}
-        )
-      },
-      (err)=>{console.log(err)}
-    )
+    this.customerSrv.deleteUser(id);
   }
 
 }

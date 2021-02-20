@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomersService } from 'src/app/Services/Customers/customers.service';
-import { OrdersService } from 'src/app/Services/Orders/orders.service';
-import { ICustomer } from 'src/app/ViewModels/ICustomer';
-import { IOrder } from 'src/app/ViewModels/IOrder';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { UsersService } from 'src/app/firebaseServices/User/users.service';
+import { OrdersService } from 'src/app/firebaseServices/Order/orders.service';
 
 @Component({
   selector: 'app-orders',
@@ -10,37 +10,34 @@ import { IOrder } from 'src/app/ViewModels/IOrder';
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit {
-  customerList:ICustomer[];
-  orderList: IOrder[];
-  constructor(private orderSrv:OrdersService, private customerSrv:CustomersService) { }
+  customerList;
+  orderList;
+
+  subscription: Subscription[] = [];
+
+  constructor(private orderSrv:OrdersService, private customerSrv:UsersService) { }
 
   ngOnInit(): void {
-    this.orderSrv.getAllOrders().subscribe(
-      (res)=>{
-        this.orderList=res
-      },
-      (err)=>{console.log(err)}
-    )
-    this.customerSrv.getAllCustomers().subscribe(
-      (res)=>{
-        this.customerList=res
-      },
-      (err)=>{console.log(err)}
-    )
+    this.subscription.push(this.customerSrv.getUsers().subscribe(data => {
+      this.customerList = data.map(e => {
+        return { id: e.payload.doc.id, ...(e.payload.doc.data() as {}) };
+      })
+    }))
+    this.subscription.push(this.orderSrv.getOrders().subscribe(data => {
+      this.orderList = data.map(e => {
+        return { id: e.payload.doc.id, ...(e.payload.doc.data() as {}) };
+      })
+    }))
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.forEach(element => {
+      element.unsubscribe();
+    });
   }
 
   deleteOrder(id) {
-    this.orderSrv.deleteOrder(id).subscribe(
-      (resp)=>{
-        this.orderSrv.getAllOrders().subscribe(
-          (res)=>{
-            this.orderList=res
-          },
-          (err)=>{console.log(err)}
-        )
-      },
-      (err)=>{console.log(err)}
-    )
+    this.orderSrv.deleteOrder(id);
   }
 
   getCustomerNameByID(id:number) : string {

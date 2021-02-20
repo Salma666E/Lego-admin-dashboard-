@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CategoriesService } from 'src/app/Services/Categories/categories.service';
-import { ProductsService } from 'src/app/Services/Products/products.service';
-import { ICategory } from 'src/app/ViewModels/icategory';
-import { IProduct } from 'src/app/ViewModels/IProduct';
+import { Subscription } from 'rxjs';
+import { CategoriesService } from 'src/app/firebaseServices/Category/categories.service';
+import { ProductsService } from 'src/app/firebaseServices/Product/products.service';
 
 @Component({
   selector: 'app-products',
@@ -11,42 +10,40 @@ import { IProduct } from 'src/app/ViewModels/IProduct';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  productList:IProduct[];
-  categoryList: ICategory[];
+  productList;
+  categoryList;
+
+  subscription: Subscription[] = [];
+
   constructor(private prdSrv:ProductsService, private catSrv:CategoriesService,
               private router:Router) { }
 
   ngOnInit(): void {
-    this.prdSrv.getAllProducts().subscribe(
-      (res)=>{
-        this.productList=res
-      },
-      (err)=>{console.log(err)}
-    )
-    this.catSrv.getAllCategories().subscribe(
-      (res)=>{
-        this.categoryList=res
-      },
-      (err)=>{console.log(err)}
-    )
+    this.subscription.push(this.prdSrv.getProducts().subscribe(data => {
+      this.productList = data.map(e => {
+        return { id: e.payload.doc.id, ...(e.payload.doc.data() as {}) };
+      }) 
+    }))
+    this.subscription.push(this.catSrv.getCategories().subscribe(data => {
+      this.categoryList = data.map(e => {
+        return { id: e.payload.doc.id, ...(e.payload.doc.data() as {}) };
+      }) 
+    }))
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.forEach(element => {
+      element.unsubscribe();
+    });
   }
 
   goToProduct(id) {
-    this.router.navigate(['/Product',id]);
+    // this.router.navigate(['/Product',id]);
+    // document.location.href = `website/${id}`;
   }
 
   deleteProduct(id) {
-    this.prdSrv.deleteProduct(id).subscribe(
-      (resp)=>{
-        this.prdSrv.getAllProducts().subscribe(
-          (res)=>{
-            this.productList=res
-          },
-          (err)=>{console.log(err)}
-        )
-      },
-      (err)=>{console.log(err)}
-    )
+    this.prdSrv.deleteProduct(id);
   }
   
   goToAddProducts() {

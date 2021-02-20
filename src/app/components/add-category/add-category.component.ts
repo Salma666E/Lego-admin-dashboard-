@@ -1,8 +1,8 @@
-import { ICategory } from 'src/app/ViewModels/icategory';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { CategoriesService } from 'src/app/Services/Categories/categories.service';
+import { CategoriesService } from 'src/app/firebaseServices/Category/categories.service';
+import { CategoryModel } from 'src/app/models/categoriesModel';
 
 @Component({
   selector: 'app-add-category',
@@ -10,9 +10,9 @@ import { CategoriesService } from 'src/app/Services/Categories/categories.servic
   styleUrls: ['./add-category.component.scss']
 })
 export class AddCategoryComponent implements OnInit {
-  newCategory: ICategory;
-  subscribtion: Subscription | null = null;
-  @ViewChild('TotalOrdered') TotalOrdered: ElementRef = new ElementRef('input');
+  newCategory:CategoryModel;
+  subscription: Subscription[] = [];
+  @ViewChild('Description') Description: ElementRef = new ElementRef('input');
   @ViewChild('Name') Name: ElementRef = new ElementRef('input');
   constructor(private router: Router, private catService: CategoriesService) {
   }
@@ -21,17 +21,14 @@ export class AddCategoryComponent implements OnInit {
     
   }
   addCategory() {
+    
     this.newCategory = {
       name: this.Name.nativeElement.value,
-      totalOrdered: parseInt(this.TotalOrdered.nativeElement.value)
+      description: this.Description.nativeElement.value,
+      totalOrdered: 0
     };
-    this.catService.addCategory(this.newCategory).subscribe(
-      (res) => {
-        this.router.navigate([`/Admin/Categories`]);
-        alert("Category added....");
-      },
-      (err) => { console.log(err) }
-    );
+    this.catService.createCategory(this.newCategory);
+    this.router.navigate(['Admin/Categories']);
   }
 
 }

@@ -1,25 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CategoriesService } from 'src/app/Services/Categories/categories.service';
-import { ICategory } from 'src/app/ViewModels/icategory';
+import { Subscription } from 'rxjs';
+
+import { CategoriesService } from 'src/app/firebaseServices/Category/categories.service';
 
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.scss']
 })
-export class CategoriesComponent implements OnInit {
+export class CategoriesComponent implements OnInit, OnDestroy {
 
-  categoryList: ICategory[];
+  categoryList = [];
+  subscription: Subscription[] = [];
   constructor(private catSrv:CategoriesService, private router:Router) { }
 
   ngOnInit(): void {
-    this.catSrv.getAllCategories().subscribe(
-      (res)=>{
-        this.categoryList=res
-      },
-      (err)=>{console.log(err)}
-    )
+    this.subscription.push(this.catSrv.getCategories().subscribe(data => {
+      this.categoryList = data.map(e => {
+        return { id: e.payload.doc.id, ...(e.payload.doc.data() as {}) };
+      }) 
+    }))
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.forEach(element => {
+      element.unsubscribe();
+    });
   }
 
   goToAddCategory() {
@@ -27,17 +34,7 @@ export class CategoriesComponent implements OnInit {
   }
 
   deleteCategory(id) {
-    this.catSrv.deleteCategory(id).subscribe(
-      (resp)=>{
-        this.catSrv.getAllCategories().subscribe(
-          (res)=>{
-            this.categoryList=res
-          },
-          (err)=>{console.log(err)}
-        )
-      },
-      (err)=>{console.log(err)}
-    )
+    this.catSrv.deleteCategory(id);
   }
 
 }

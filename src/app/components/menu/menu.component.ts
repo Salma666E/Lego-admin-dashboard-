@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { AdminService } from 'src/app/Services/Admins/admin.service';
+import { Subscription } from 'rxjs';
+import { UsersService } from 'src/app/firebaseServices/User/users.service';
 import { NgAuthService } from 'src/app/Services/Auth/auth.service';
-import { IAdmin } from 'src/app/ViewModels/IAdmin';
 
 @Component({
   selector: 'app-menu',
@@ -9,9 +9,13 @@ import { IAdmin } from 'src/app/ViewModels/IAdmin';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
-  admin:IAdmin = {email: '',loggedin:true, password: '', name:'Nour'};
+  admin;
+  userID;
+
+  subscription: Subscription[] = [];
+
   @ViewChild('mySidenav') sideNav: ElementRef;
-  constructor(private adminSrv:AdminService, private authSrv:NgAuthService) { }
+  constructor(private userSrv:UsersService, private authSrv:NgAuthService) { }
 
   openNav() {
     this.sideNav.nativeElement.style.marginLeft = "0";
@@ -26,10 +30,17 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.adminSrv.getAdminByID(1).subscribe(
-      (res)=>{this.admin=res},
-      (err)=>{console.log(err)}
+    this.userID = JSON.parse(localStorage.getItem('user')).uid;
+    this.subscription.push(this.userSrv.getSpcUser(this.userID).subscribe(data => {
+      this.admin = { id: data.payload.id, ...(data.payload.data() as {}) };
+    })
     );
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.forEach(element => {
+      element.unsubscribe();
+    });
   }
 
 }

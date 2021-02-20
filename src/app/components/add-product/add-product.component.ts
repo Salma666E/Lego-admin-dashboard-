@@ -1,10 +1,9 @@
-import { ProductsService } from 'src/app/Services/Products/products.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { CategoriesService } from 'src/app/Services/Categories/categories.service';
-import { ICategory } from 'src/app/ViewModels/icategory';
-import { IProduct } from 'src/app/ViewModels/IProduct';
+import { CategoriesService } from 'src/app/firebaseServices/Category/categories.service';
+import { ProductsService } from 'src/app/firebaseServices/Product/products.service';
+import { ProductModel } from 'src/app/models/productModel';
 
 @Component({
   selector: 'app-add-product',
@@ -12,29 +11,30 @@ import { IProduct } from 'src/app/ViewModels/IProduct';
   styleUrls: ['./add-product.component.scss']
 })
 export class AddProductComponent implements OnInit {
-  subscribtion: Subscription | null = null;
-  CategoryList: ICategory[] = [];
+
   Avail: boolean=false;
+  
+  newProduct: ProductModel;
+  CategoryList = [];
+  subscription: Subscription[] = [];
+
   @ViewChild('SelectCat') SelectCat: ElementRef = new ElementRef('input');
-  @ViewChild('Rating') Rating: ElementRef = new ElementRef('input');
+  // @ViewChild('Rating') Rating: ElementRef = new ElementRef('input');
   @ViewChild('Available') Available: ElementRef = new ElementRef('input');
   @ViewChild('description') description: ElementRef = new ElementRef('input');
   @ViewChild('Stock') Stock: ElementRef = new ElementRef('input');
   @ViewChild('Image') Image: ElementRef = new ElementRef('input');
   @ViewChild('Price') Price: ElementRef = new ElementRef('input');
   @ViewChild('Name') Name: ElementRef = new ElementRef('input');
-  newProduct: IProduct;
-  constructor(private router: Router, private catService: CategoriesService, private prdService: ProductsService) {
+  constructor(private router: Router, private prdSrv: ProductsService, private catSrv: CategoriesService) {
   }
 
   ngOnInit(): void {
-    this.subscribtion = this.catService.getAllCategories().subscribe(
-      (response) => {
-        console.log("in subscribe");
-        this.CategoryList = response;
-      },
-      (err) => { console.log(err) }
-    );
+    this.subscription.push(this.catSrv.getCategories().subscribe(data => {
+      this.CategoryList = data.map(e => {
+        return { id: e.payload.doc.id, ...(e.payload.doc.data() as {}) };
+      }) 
+    }))
   }
 
   ngAfterViewInit(): void {
@@ -56,17 +56,13 @@ export class AddProductComponent implements OnInit {
       stock: parseInt(this.Stock.nativeElement.value),
       image: this.Image.nativeElement.value,
       available: this.Avail,
-      rating: parseInt(this.Rating.nativeElement.value),
-      categoryID: parseInt(this.SelectCat.nativeElement.value)
+      // rating: parseInt(this.Rating.nativeElement.value),
+      rating: 5,
+      categoryID: this.SelectCat.nativeElement.value,
+      images: []
     };
-    this.prdService.addProduct(this.newProduct).subscribe(
-      (res) => {
-        console.log("res" + this.newProduct.categoryID);
-        this.router.navigate([`/Admin/Products`]);
-        alert("Product added....");
-      },
-      (err) => { console.log(err) }
-    );
+    this.prdSrv.createProduct(this.newProduct);
+    this.router.navigate(['Admin/Products']);
   }
 
 }
