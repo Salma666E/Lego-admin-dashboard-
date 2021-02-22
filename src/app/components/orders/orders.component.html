@@ -17,7 +17,8 @@
       </span>
     </div>
     <div class="row mt-3">
-      <div class="col-12">
+      <div class="col-md-6" *ngFor="let order of orderList">
+        <!--
         <div class="table-responsive">
           <table class="table table-hover" id="data">
             <thead>
@@ -38,7 +39,7 @@
                 <!-- 
                   <button type="button" class="btn shadow-none darkBlue"><i class="fa fa-eye"
                       aria-hidden="true"></i></button>
-                 -->   
+                   
                   <button type="button" (click)="deleteOrder(item.id)" class="btn shadow-none darkBlue"><i
                       class="fa fa-trash" aria-hidden="true"></i></button>
                   <!--  
@@ -52,10 +53,55 @@
             
                                         )" class="btn shadow-none darkBlue"><i class="fas fa-edit"
                       aria-hidden="true"></i></button>
-                </td> -->
+                </td> 
               </tr>
             </tbody>
           </table>
+        </div>
+-->
+        <div class="card text-left">
+          <div class="card-body" style="background-color: rgba(236, 228, 228, 0.274);">
+            <ul style="list-style: none; padding: 0; margin: 0;">
+              <li style="list-style-type: none;">
+                <p class="card-text">Order ID</p>
+                <ul style="list-style: none;">
+                  <li><span>#{{order?.id}}</span></li>
+                </ul>
+              </li>
+              <li>
+                <p class="card-text">Name</p>
+                <ul style="list-style: none;">
+                  <li><span>{{getCustomerNameByID(order?.userID)}}</span></li>
+                </ul>
+              </li>
+              <li>
+                <p class="card-text">Address</p>
+                <ul style="list-style: none;">
+                  <li><span>{{order?.address.street}}, {{order?.address.city}} (ZIP Code: {{order.address.zip}})</span>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <p class="card-text">Date</p>
+                <ul style="list-style: none;">
+                  <li><span>{{order?.date | date}}</span></li>
+                </ul>
+              </li>
+              <li>
+                <p class="card-text">Phone Number</p>
+                <ul style="list-style: none;">
+                  <li><span>{{order?.mobilePhone}}</span></li>
+                </ul>
+              </li>
+              <li>
+                <p class="card-text">Products</p>
+                <ul *ngFor="let item of order?.productsIDs" style="list-style: none;">
+                  <li><span>{{getProductNameByID(item?.id)}} (Qty: {{item?.qty}})</span></li>
+                </ul>
+              </li>
+            </ul>
+            <button (click)="deleteOrder(order?.id)" type="button" class="btn btn-dark shadow-none mt-3">Delete</button>
+          </div>
         </div>
       </div>
     </div>

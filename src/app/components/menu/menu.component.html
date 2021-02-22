@@ -15,9 +15,9 @@
   <a routerLink="/Admin/Orders" routerLinkActive="active" class="rounded">
     <i class="fas fa-shopping-bag mr-2"></i> Orders
   </a>
-  <a routerLink="/Admin/Admins" routerLinkActive="active" class="rounded">
+  <!-- <a routerLink="/Admin/Admins" routerLinkActive="active" class="rounded">
     <i class="fas fa-user mr-2"></i> Admins
-  </a>
+  </a> -->
   <a (click)="logout()" routerLinkActive="active" class="rounded" role="button">
     <i class="fas fa-door-open mr-2"></i> Logout
   </a>
@@ -28,7 +28,7 @@
     <i class="fa fa-user-circle fa-2x mr-2 pt-2" aria-hidden="true"></i>
     <div>
       <p class="my-0"><small>Administrator</small></p>
-      <span><small class="font-weight-bold">{{admin.displayName}}</small></span>
+      <span><small class="font-weight-bold">{{admin?.displayName}}</small></span>
     </div>
   </div>
 

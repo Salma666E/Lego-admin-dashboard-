@@ -94,7 +94,7 @@ export class NgAuthService {
       const userState: User = {
         uid: user.uid,
         email: user.email,
-        displayName: user.email.split("@")[0]
+        displayName: user.displayName
       }
       return userRef.set(userState, {
         merge: true
