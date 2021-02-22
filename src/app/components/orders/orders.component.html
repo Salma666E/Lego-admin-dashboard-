@@ -17,8 +17,7 @@
       </span>
     </div>
     <div class="row mt-3">
-      <div class="col-md-6" *ngFor="let order of orderList">
-        <!--
+      <div class="col-md-12">
         <div class="table-responsive">
           <table class="table table-hover" id="data">
             <thead>
@@ -31,16 +30,16 @@
             </thead>
             <tbody>
               <tr *ngFor="let item of orderList">
-                <th scope="row">#{{item.id}}</th>
-                <td class="name text-truncate">{{getCustomerNameByID(item.userID)}}</td>
-                <td class="price text-truncate"><small>{{item.amount|currency}}</small></td>
-                <td class="date text-truncate"><small>{{item.date|date}}</small></td>
+                <th scope="row">#{{item?.id}}</th>
+                <td class="name text-truncate">{{getCustomerNameByID(item?.userID)}}</td>
+                <td class="price text-truncate"><small>{{item?.totalPrice|currency}}</small></td>
+                <td class="date text-truncate"><small>{{item?.date|date}}</small></td>
                 <td class="d-flex">
-                <!-- 
-                  <button type="button" class="btn shadow-none darkBlue"><i class="fa fa-eye"
+
+                  <button type="button" (click)="goToOrder(item?.id)" class="btn shadow-none darkBlue"><i class="fa fa-eye"
                       aria-hidden="true"></i></button>
-                   
-                  <button type="button" (click)="deleteOrder(item.id)" class="btn shadow-none darkBlue"><i
+
+                  <button type="button" (click)="deleteOrder(item?.id)" class="btn shadow-none darkBlue"><i
                       class="fa fa-trash" aria-hidden="true"></i></button>
                   <!--  
                   <button type="button" onclick="Update(
@@ -53,13 +52,13 @@
             
                                         )" class="btn shadow-none darkBlue"><i class="fas fa-edit"
                       aria-hidden="true"></i></button>
-                </td> 
+                  -->
+                </td>
               </tr>
             </tbody>
           </table>
         </div>
--->
-        <div class="card text-left">
+        <!-- <div class="card text-left">
           <div class="card-body" style="background-color: rgba(236, 228, 228, 0.274);">
             <ul style="list-style: none; padding: 0; margin: 0;">
               <li style="list-style-type: none;">
@@ -102,7 +101,7 @@
             </ul>
             <button (click)="deleteOrder(order?.id)" type="button" class="btn btn-dark shadow-none mt-3">Delete</button>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

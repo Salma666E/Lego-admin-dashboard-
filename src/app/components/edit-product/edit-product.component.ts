@@ -1,22 +1,25 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CategoriesService } from 'src/app/firebaseServices/Category/categories.service';
 import { ProductsService } from 'src/app/firebaseServices/Product/products.service';
 import { ProductModel } from 'src/app/models/productModel';
 
 @Component({
-  selector: 'app-add-product',
-  templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.scss']
+  selector: 'app-edit-product',
+  templateUrl: './edit-product.component.html',
+  styleUrls: ['./edit-product.component.scss']
 })
-export class AddProductComponent implements OnInit {
+export class EditProductComponent implements OnInit {
 
-  Avail: boolean=false;
-  
+  Avail: boolean = false;
+
   newProduct: ProductModel;
   CategoryList = [];
   subscription: Subscription[] = [];
+
+  prdID;
+  product;
 
   @ViewChild('SelectCat') SelectCat: ElementRef = new ElementRef('input');
   // @ViewChild('Rating') Rating: ElementRef = new ElementRef('input');
@@ -24,19 +27,28 @@ export class AddProductComponent implements OnInit {
   @ViewChild('description') description: ElementRef = new ElementRef('input');
   @ViewChild('Stock') Stock: ElementRef = new ElementRef('input');
   @ViewChild('Image') Image: ElementRef = new ElementRef('input');
-  @ViewChild('Image1') Image1: ElementRef = new ElementRef('input');
-  @ViewChild('Image2') Image2: ElementRef = new ElementRef('input');
-  @ViewChild('Image3') Image3: ElementRef = new ElementRef('input');
+  @ViewChild('Image') Image1: ElementRef = new ElementRef('input');
+  @ViewChild('Image') Image2: ElementRef = new ElementRef('input');
+  @ViewChild('Image') Image3: ElementRef = new ElementRef('input');
   @ViewChild('Price') Price: ElementRef = new ElementRef('input');
   @ViewChild('Name') Name: ElementRef = new ElementRef('input');
-  constructor(private router: Router, private prdSrv: ProductsService, private catSrv: CategoriesService) {
+  constructor(private router: Router, private prdSrv: ProductsService,
+    private catSrv: CategoriesService, private activatedroute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.activatedroute.paramMap.subscribe((params: ParamMap) => {
+      let PID: string | null = params.get('PID');
+      this.prdID = PID;
+      this.subscription.push(this.prdSrv.getSpcProduct(this.prdID).subscribe(data => {
+        this.product = { id: data.payload.id, ...(data.payload.data() as {}) };
+      })
+      )
+    });
     this.subscription.push(this.catSrv.getCategories().subscribe(data => {
       this.CategoryList = data.map(e => {
         return { id: e.payload.doc.id, ...(e.payload.doc.data() as {}) };
-      }) 
+      })
     }))
   }
 
@@ -45,9 +57,7 @@ export class AddProductComponent implements OnInit {
     this.SelectCat.nativeElement.style.fontWeight = 'bold';
     this.SelectCat.nativeElement.style.backgroundColor = 'lightgray';
   }
-  addPRODUCT() {
-    // console.log("add:"+this.Available.nativeElement.value);
-    
+  editProduct() {
     // if (this.Available.nativeElement.value = "on")
     //   this.Avail = true;
     // else
@@ -55,20 +65,20 @@ export class AddProductComponent implements OnInit {
     this.newProduct = {
       name: this.Name.nativeElement.value,
       description: this.description.nativeElement.value,
-      price: parseInt(this.Price.nativeElement.value),
+      price: parseFloat(this.Price.nativeElement.value),
       stock: parseInt(this.Stock.nativeElement.value),
       image: this.Image.nativeElement.value,
       available: true,
       // rating: parseInt(this.Rating.nativeElement.value),
-      rating: 5,
+      rating: this.product.rating,
       categoryID: this.SelectCat.nativeElement.value,
       images: [
         this.Image1.nativeElement.value,
         this.Image2.nativeElement.value,
-        this.Image3.nativeElement.value,
+        this.Image3.nativeElement.value
       ]
     };
-    this.prdSrv.createProduct(this.newProduct);
+    this.prdSrv.updateProductByID(this.newProduct, this.prdID);
     this.router.navigate(['Admin/Products']);
   }
 

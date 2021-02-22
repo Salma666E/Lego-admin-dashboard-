@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminsComponent } from './admins.component';
+import { SingleOrderComponent } from './single-order.component';
 
-describe('AdminsComponent', () => {
-  let component: AdminsComponent;
-  let fixture: ComponentFixture<AdminsComponent>;
+describe('SingleOrderComponent', () => {
+  let component: SingleOrderComponent;
+  let fixture: ComponentFixture<SingleOrderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminsComponent ]
+      declarations: [ SingleOrderComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminsComponent);
+    fixture = TestBed.createComponent(SingleOrderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

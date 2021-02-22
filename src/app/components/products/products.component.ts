@@ -42,6 +42,10 @@ export class ProductsComponent implements OnInit {
     // document.location.href = `website/${id}`;
   }
 
+  goToEdit(id) {
+    this.router.navigate(['/Admin/Products',id]);
+  }
+
   deleteProduct(id) {
     this.prdSrv.deleteProduct(id);
   }

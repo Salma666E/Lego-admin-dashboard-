@@ -15,14 +15,14 @@ import { AddProductComponent } from './components/add-product/add-product.compon
 import { CustomersComponent } from './components/customers/customers.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { LoginComponent } from './components/login/login.component';
-import { AdminsComponent } from './components/admins/admins.component';
-import { AddAdminComponent } from './components/add-admin/add-admin.component';
 
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { NgAuthService } from './Services/Auth/auth.service';
+import { SingleOrderComponent } from './components/single-order/single-order.component';
+import { EditProductComponent } from './components/edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -36,8 +36,8 @@ import { NgAuthService } from './Services/Auth/auth.service';
     CustomersComponent,
     OrdersComponent,
     LoginComponent,
-    AdminsComponent,
-    AddAdminComponent
+    SingleOrderComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,

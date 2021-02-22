@@ -18,7 +18,7 @@ export class OrdersComponent implements OnInit {
   subscription: Subscription[] = [];
 
   constructor(private orderSrv:OrdersService, private customerSrv:UsersService,
-    private prdSrv: ProductsService) { }
+    private prdSrv: ProductsService, private route: Router) { }
 
   ngOnInit(): void {
     this.subscription.push(this.customerSrv.getUsers().subscribe(data => {
@@ -56,6 +56,10 @@ export class OrdersComponent implements OnInit {
   getProductNameByID(id:any) : string {
     let x = this.productList?.find(element=> element.id == id);
     return `${x?.name}`
+  }
+
+  goToOrder(id: any) {
+    this.route.navigate(['Admin/Orders',id]);
   }
 
 }

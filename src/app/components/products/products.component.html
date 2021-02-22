@@ -49,18 +49,10 @@
 
                   <button type="button" (click)="deleteProduct(item.id)" class="btn shadow-none darkBlue"><i
                       class="fa fa-trash" aria-hidden="true"></i></button>
-                <!-- 
-                  <button type="button" onclick="Update(
-                                        '${element.id}',
-                                        '${element.image}',
-                                        '${element.name}',
-                                        '${element.description}',
-                                        '${element.price}',
-                                        '${element.stock}'
-            
-                                        )" class="btn shadow-none darkBlue"><i class="fas fa-edit"
+                
+                  <button type="button" (click)="goToEdit(item?.id)" class="btn shadow-none darkBlue"><i class="fas fa-edit"
                       aria-hidden="true"></i></button>
-                </td> -->
+                </td>
               </tr>
             </tbody>
           </table>
