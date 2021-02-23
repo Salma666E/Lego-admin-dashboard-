@@ -1,16 +1,16 @@
 <app-menu></app-menu>
-<div class="row">
+<div class="row text-justify" dir="auto">
   <div class="col p-4 pt-5">
     <div class="d-flex">
-      <h3 class="font-weight-bold darkBlue">Categories</h3>
+      <h3 class="font-weight-bold darkBlue">{{'Categories'|translate}}</h3>
       <button class="ml-auto addBtn btn shadow-none font-weight-bold text-white"
       (click)="goToAddCategory()" type="button">
-        <i class="fa fa-plus mr-2"></i> Add Category
+        <i class="fa fa-plus mr-2"></i> {{'AddCategory'|translate}}
       </button>
     </div>
     <div class="input-group col-lg-4 col-md-6 col-12 ml-auto px-0 mt-3">
       <input autocomplete="off" class="form-control py-2 shadow-none border-right-0 border" type="search"
-        placeholder="Search by ID" id="search-input">
+        placeholder="{{'SearchbyID'|translate}}" id="search-input">
       <span class="input-group-append">
         <button class="btn shadow-none border-left-0 border" type="button">
           <i class="fa fa-search searchIcon"></i>
@@ -23,9 +23,9 @@
           <table class="table table-hover" id="data">
             <thead>
               <tr>
-                <th scope="col"><small>CategoryID</small></th>
-                <th scope="col"><small>Name</small></th>
-                <th scope="col"><small>Ordered</small></th>
+                <th scope="col"><small>{{'CategoryID'|translate}}</small></th>
+                <th scope="col"><small>{{'Name'|translate}}</small></th>
+                <th scope="col"><small>{{'Ordered'|translate}}</small></th>
               </tr>
             </thead>
             <tbody>

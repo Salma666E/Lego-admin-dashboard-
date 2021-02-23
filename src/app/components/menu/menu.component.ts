@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { UsersService } from 'src/app/firebaseServices/User/users.service';
 import { NgAuthService } from 'src/app/Services/Auth/auth.service';
@@ -15,7 +16,7 @@ export class MenuComponent implements OnInit {
   subscription: Subscription[] = [];
 
   @ViewChild('mySidenav') sideNav: ElementRef;
-  constructor(private userSrv:UsersService, private authSrv:NgAuthService) { }
+  constructor(private userSrv:UsersService, private authSrv:NgAuthService,public translate: TranslateService) { }
 
   openNav() {
     this.sideNav.nativeElement.style.marginLeft = "0";

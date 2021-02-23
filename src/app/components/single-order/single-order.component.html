@@ -1,10 +1,10 @@
 <app-menu></app-menu>
-<div class="container-fluid mt-5">
+<div class="container-fluid mt-5 text-justify" dir="auto">
     <div class="row">
         <div class="col-md-6">
             <div class="card h-100 text-left">
                 <div class="card-body">
-                    <h4 class="card-title" style="font-size: 16px;font-weight: bold;">Delivery Address</h4>
+                    <h4 class="card-title" style="font-size: 16px;font-weight: bold;">{{'DeliveryAddress'|translate}}</h4>
                     <p class="card-text">{{getCustomerNameByID(order?.userID)}}</p>
                     <p class="card-text my-0" style="color: gray;">{{order?.address?.street}}</p>
                     <p class="card-text my-0" style="color: gray;">{{order?.address?.city}}</p>
@@ -21,26 +21,26 @@
         <div class="col-md-6">
             <div class="card h-100 text-left mt-md-0 mt-3">
               <div class="card-body">
-                <h4 class="card-title" style="font-size: 16px;font-weight: bold;">Order Summary</h4>
+                <h4 class="card-title" style="font-size: 16px;font-weight: bold;">{{'OrderSummary'|translate}}</h4>
                 <div class="d-flex mt-4">
-                    <p class="card-text">Sub-total</p>
+                    <p class="card-text">{{'Subtotal'|translate}}</p>
                     <p class="card-text ml-auto">{{order?.totalPrice | currency}}</p>
                 </div>
                 <div class="d-flex">
-                    <p class="card-text">Items</p>
+                    <p class="card-text">{{'Items'|translate}}</p>
                     <p class="card-text ml-auto">{{totalItems()}}</p>
                 </div>
                 <div class="d-flex">
-                    <p class="card-text">Tax</p>
+                    <p class="card-text">{{'Tax'|translate}}</p>
                     <p class="card-text ml-auto">{{applyTax() | currency}}</p>
                 </div>
                 <div class="d-flex">
-                    <p class="card-text">Delivery Fee</p>
-                    <p class="card-text ml-auto">Free</p>
+                    <p class="card-text">{{'Delivery'|translate}}</p>
+                    <p class="card-text ml-auto">{{'Free'|translate}}</p>
                 </div>
                 <hr>
                 <div class="d-flex">
-                    <p class="card-text" style="font-size: 22px;font-weight: bold;">Order Total</p>
+                    <p class="card-text" style="font-size: 22px;font-weight: bold;">{{'OrderTotal'|translate}}</p>
                     <p class="card-text ml-auto">{{(applyTax() + order?.totalPrice) | currency}}</p>
                 </div>
               </div>
@@ -51,11 +51,11 @@
         <div class="col">
             <div class="card h-100 text-left">
               <div class="card-body">
-                <h4 class="card-title" style="font-size: 16px;font-weight: bold;">Items</h4>
+                <h4 class="card-title" style="font-size: 16px;font-weight: bold;">{{'Items'|translate}}</h4>
                 <div class="mt-4">
                     <div *ngFor="let item of order?.productsIDs">
                         <div class="d-flex">
-                            <p class="card-text" style="font-weight: bold;">Qty: {{item?.qty}}</p>
+                            <p class="card-text" style="font-weight: bold;">{{'Qty'|translate}} {{item?.qty}}</p>
                             <p class="card-text ml-auto align-self-center">{{getProductNameByID(item?.id)}}</p>
                             <p class="card-text ml-auto align-self-center">{{getProductPriceByID(item?.id) | currency}}</p>
                         </div>
@@ -70,8 +70,8 @@
             <div class="cardtext-left">
               <div class="card-body">
                   <div class="d-flex flex-wrap mt-4">
-                      <button type="button" (click)="deleteOrder(ordID)" class="btn btn-primary btn-md btn-block"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
-                      <button type="button" (click)="goBack()" class="btn btn-primary btn-md btn-block"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button>
+                      <button type="button" (click)="deleteOrder(ordID)" class="btn btn-primary btn-md btn-block"><i class="fa fa-trash" aria-hidden="true"></i> {{'Delete'|translate}}</button>
+                      <button type="button" (click)="goBack()" class="btn btn-primary btn-md btn-block"><i class="fa fa-arrow-left" aria-hidden="true"></i> {{'Back'|translate}}</button>
                     </div>
               </div>
             </div>

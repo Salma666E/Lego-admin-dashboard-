@@ -23,6 +23,7 @@ import { environment } from '../environments/environment';
 import { NgAuthService } from './Services/Auth/auth.service';
 import { SingleOrderComponent } from './components/single-order/single-order.component';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
+import { I18nModule } from './i18n/i18n.module';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { EditProductComponent } from './components/edit-product/edit-product.com
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    I18nModule,
   ],
   providers: [NgAuthService],
   bootstrap: [AppComponent]

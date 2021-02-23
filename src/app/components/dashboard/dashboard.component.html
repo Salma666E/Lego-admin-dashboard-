@@ -1,7 +1,7 @@
 <app-menu></app-menu>
-<div class="row">
+<div class="row text-justify" dir="auto">
     <div class="col p-4 pt-5">
-        <h3 class="font-weight-bold darkBlue">Dashboard</h3>
+        <h3 class="font-weight-bold darkBlue">{{'Dashboard'|translate}}</h3>
         <div class="row mt-4">
             <div class="col-md-6">
                 <div class="card h-100 dash1">
@@ -9,7 +9,7 @@
                         <div class="d-flex">
                             <div>
                                 <h2 class="font-weight-bold">{{totalOrds|number}}</h2>
-                                <p><small class="font-weight-bold">Orders</small></p>
+                                <p><small class="font-weight-bold">{{'Orders'|translate}}</small></p>
                             </div>
                             <div class="align-self-center ml-auto">
                                 <i class="fa fa-shopping-bag fa-4x dashIcons" aria-hidden="true"></i>
@@ -18,7 +18,7 @@
                     </div>
                     <div class="text-center dash1Bottom">
                         <a name="" id="" class="btn moreInfoBtn text-white shadow-none"
-                            routerLink="/Admin/Orders" role="button">More Info <i
+                            routerLink="/Admin/Orders" role="button">{{'MoreInfo'|translate}} <i
                                 class="fa fa-arrow-circle-right fa-xs" aria-hidden="true"></i></a>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                         <div class="d-flex">
                             <div>
                                 <h2 class="font-weight-bold">{{totalPrds|number}}</h2>
-                                <p><small class="font-weight-bold">Products</small></p>
+                                <p><small class="font-weight-bold">{{'Products'|translate}}</small></p>
                             </div>
                             <div class="align-self-center ml-auto">
                                 <i class="fas fa-box-open fa-4x dashIcons" aria-hidden="true"></i>
@@ -38,7 +38,7 @@
                     </div>
                     <div class="text-center dash2Bottom">
                         <a name="" id="" class="btn moreInfoBtn text-white shadow-none"
-                        routerLink="/Admin/Products" role="button">More Info <i
+                        routerLink="/Admin/Products" role="button">{{'MoreInfo'|translate}} <i
                                 class="fa fa-arrow-circle-right fa-xs" aria-hidden="true"></i></a>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                         <div class="d-flex">
                             <div>
                                 <h2 class="font-weight-bold">{{totalCusts}}</h2>
-                                <p><small class="font-weight-bold">Customers</small></p>
+                                <p><small class="font-weight-bold">{{'Customers'|translate}}</small></p>
                             </div>
                             <div class="align-self-center ml-auto">
                                 <i class="fas fa-user fa-4x dashIcons" aria-hidden="true"></i>
@@ -60,7 +60,7 @@
                     </div>
                     <div class="text-center dash3Bottom">
                         <a name="" id="" class="btn moreInfoBtn text-white shadow-none"
-                        routerLink="/Admin/Customers" role="button">More Info <i
+                        routerLink="/Admin/Customers" role="button">{{'MoreInfo'|translate}} <i
                                 class="fa fa-arrow-circle-right fa-xs" aria-hidden="true"></i></a>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                         <div class="d-flex">
                             <div>
                                 <h2 class="font-weight-bold">{{totalCats}}</h2>
-                                <p><small class="font-weight-bold">Categories</small></p>
+                                <p><small class="font-weight-bold">{{'Categories'|translate}}</small></p>
                             </div>
                             <div class="align-self-center ml-auto">
                                 <i class="fa fa-server fa-4x dashIcons" aria-hidden="true"></i>
@@ -80,7 +80,7 @@
                     </div>
                     <div class="text-center dash4Bottom">
                         <a name="" id="" class="btn moreInfoBtn text-white shadow-none"
-                        routerLink="/Admin/Categories" role="button">More Info <i
+                        routerLink="/Admin/Categories" role="button">{{'MoreInfo'|translate}} <i
                                 class="fa fa-arrow-circle-right fa-xs" aria-hidden="true"></i></a>
                     </div>
                 </div>
@@ -91,19 +91,19 @@
                 <div class="card h-100 totalSalesDash">
                     <div class="card-body text-white">
                         <div class="d-flex">
-                            <p class="card-text font-weight-bold">Total Sales</p>
-                            <a href="javascript:void(0)" class="ml-auto totalSalesView"><small>View Report</small></a>
+                            <p class="card-text font-weight-bold">{{'TotalSales'|translate}}</p>
+                            <a href="javascript:void(0)" class="ml-auto totalSalesView"><small>{{'ViewReport'|translate}}</small></a>
                         </div>
                         <h2 class="font-weight-bold">$74,958.49</h2>
-                        <p class="totalSalesDashTxt"><small>$7,395.37 in last month</small></p>
-                        <p><small class="font-weight-bold">This week so far</small></p>
+                        <p class="totalSalesDashTxt"><small>$7,395.37 {{'month'|translate}}</small></p>
+                        <p><small class="font-weight-bold">{{'Thisweekfar'|translate}}</small></p>
                         <div class="d-flex align-items-center">
                             <h2 class="font-weight-bold">$1,338.72</h2>
                             <div class="d-flex flex-column ml-auto">
                                 <span class="text-right totalSalesDashPercentage"><i
                                         class="fas fa-long-arrow-alt-up fa-sm"></i>
                                     4.63%</span>
-                                <span class="totalSalesDashTxt"><small>vs. last week</small></span>
+                                <span class="totalSalesDashTxt"><small>{{'week'|translate}}</small></span>
                             </div>
                         </div>
                     </div>
@@ -115,16 +115,16 @@
                 <div class="card h-100">
                     <div class="card-body averageOrderDashTxt">
                         <div class="d-flex">
-                            <p class="card-text font-weight-bold">Average order</p>
+                            <p class="card-text font-weight-bold">{{'Averageorder'|translate}}</p>
                             <div class="dropdown dropleft ml-auto">
                                 <a href="" class="dopdown-toggle" id="dropdownMenuButton3"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-ellipsis-h averageOrderDashIcon" aria-hidden="true"></i>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                                    <a class="dropdown-item" href="javascript:void(0)">15 Days</a>
-                                    <a class="dropdown-item" href="javascript:void(0)">30 Days</a>
-                                    <a class="dropdown-item" href="javascript:void(0)">3 Months</a>
+                                    <a class="dropdown-item" href="javascript:void(0)">15 {{'Days'|translate}}</a>
+                                    <a class="dropdown-item" href="javascript:void(0)">30 {{'Days'|translate}}</a>
+                                    <a class="dropdown-item" href="javascript:void(0)">3 {{'Months'|translate}}</a>
                                 </div>
                             </div>
                         </div>
@@ -133,10 +133,10 @@
                             <div class="d-flex flex-column ml-auto">
                                 <span class="text-right averageOrderDashPercentage"><i
                                         class="fas fa-long-arrow-alt-up fa-sm"></i> 4.63%</span>
-                                <span><small>vs. last week</small></span>
+                                <span><small>{{'week'|translate}}</small></span>
                             </div>
                         </div>
-                        <p class="mt-5"><small>Orders over time</small></p>
+                        <p class="mt-5"><small>{{'Ordersovertime'|translate}}</small></p>
 
                     </div>
                     <!-- <canvas id="line-chart" width="800" height="150"></canvas> -->
@@ -149,14 +149,14 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body targetTxt">
-                        <h5 class="card-title font-weight-bold">Target Sales</h5>
-                        <p class="card-text targetSubTxt">Total performance for this month</p>
+                        <h5 class="card-title font-weight-bold">{{'TargetSales'|translate}}</h5>
+                        <p class="card-text targetSubTxt">{{'Totalperformance'|translate}}</p>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="d-flex">
-                                            <h5 class="card-title font-weight-bold align-self-center m-0">Orders
+                                            <h5 class="card-title font-weight-bold align-self-center m-0">{{"Orders"|translate}}
                                             </h5>
                                             <div class="ml-auto">
                                                 <span
@@ -170,7 +170,7 @@
                                                 aria-valuemax="100"></div>
                                         </div>
                                         <div class="d-flex mt-2">
-                                            <p class="targetSubTxt">Monthly Target</p>
+                                            <p class="targetSubTxt">{{'MonthlyTarget'|translate}}</p>
                                             <div class="ml-auto">
                                                 <span class="text-right targetSubTxt">
                                                     100%</span>
@@ -183,7 +183,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="d-flex">
-                                            <h5 class="card-title font-weight-bold align-self-center m-0">Income
+                                            <h5 class="card-title font-weight-bold align-self-center m-0">{{'Income'|translate}}
                                             </h5>
                                             <div class="ml-auto">
                                                 <span
@@ -197,7 +197,7 @@
                                                 aria-valuemax="100"></div>
                                         </div>
                                         <div class="d-flex mt-2">
-                                            <p class="targetSubTxt">Monthly Target</p>
+                                            <p class="targetSubTxt">{{'MonthlyTarget'|translate}}</p>
                                             <div class="ml-auto">
                                                 <span class="text-right targetSubTxt">
                                                     100%</span>
