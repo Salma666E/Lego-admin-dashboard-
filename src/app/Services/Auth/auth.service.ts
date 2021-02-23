@@ -6,7 +6,7 @@ import { Router } from "@angular/router";
 export interface User {
     uid: string;
     email: string;
-    displayName: string;
+    displayName?: string;
  }
 
 @Injectable({
@@ -93,8 +93,7 @@ export class NgAuthService {
       const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
       const userState: User = {
         uid: user.uid,
-        email: user.email,
-        displayName: user.displayName
+        email: user.email
       }
       return userRef.set(userState, {
         merge: true

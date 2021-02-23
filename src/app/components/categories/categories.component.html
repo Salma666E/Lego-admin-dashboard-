@@ -1,14 +1,14 @@
 <app-menu></app-menu>
 <div class="row text-justify" dir="auto">
   <div class="col p-4 pt-5">
-    <div class="d-flex">
+    <div class="d-flex justify-content-between">
       <h3 class="font-weight-bold darkBlue">{{'Categories'|translate}}</h3>
-      <button class="ml-auto addBtn btn shadow-none font-weight-bold text-white"
+      <button class="addBtn btn shadow-none font-weight-bold text-white"
       (click)="goToAddCategory()" type="button">
         <i class="fa fa-plus mr-2"></i> {{'AddCategory'|translate}}
       </button>
     </div>
-    <div class="input-group col-lg-4 col-md-6 col-12 ml-auto px-0 mt-3">
+    <!-- <div class="input-group col-lg-4 col-md-6 col-12 ml-auto px-0 mt-3">
       <input autocomplete="off" class="form-control py-2 shadow-none border-right-0 border" type="search"
         placeholder="{{'SearchbyID'|translate}}" id="search-input">
       <span class="input-group-append">
@@ -16,7 +16,7 @@
           <i class="fa fa-search searchIcon"></i>
         </button>
       </span>
-    </div>
+    </div> -->
     <div class="row mt-3">
       <div class="col-12">
         <div class="table-responsive">

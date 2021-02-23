@@ -27,6 +27,20 @@
     color: #9D72FF;
     transition: 0.3s;
   }
+ 
+  .language:hover label,
+  .language:hover select {
+    background-color: #182536;
+    color: #9D72FF;
+    transition: 0.3s;
+  }
+
+  .language label,
+  .language select {
+    background-color: #101924;
+    border: none;
+    color: gray;
+  }
   
   .sidenav .closebtn {
     position: absolute;

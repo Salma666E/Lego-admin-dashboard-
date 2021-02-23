@@ -1,8 +1,8 @@
 <div id="mySidenav" class="sidenav text-justify" #mySidenav>
   <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-  <a class="rounded mt-4">
-    <label class="form-control" for="lang" style="font-weight: bold;color: darkblue; display: inline;">{{'Lang'|translate}}: 
-      <select style="border: none;" id="lang" #langSelect (change)="translate.use(langSelect.value)">
+  <a class="rounded mt-4 language">
+    <label class="form-control" for="lang" style="display: inline;">{{'Lang'|translate}}: 
+      <select id="lang" #langSelect (change)="translate.use(langSelect.value)">
         <option *ngFor="let lang of translate.getLangs()" [value]="lang"
           [attr.selected]="lang === translate.currentLang ? '' : null">{{lang}}</option>
       </select>

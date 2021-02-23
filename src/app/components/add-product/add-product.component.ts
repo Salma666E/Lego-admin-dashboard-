@@ -60,7 +60,7 @@ export class AddProductComponent implements OnInit {
       image: this.Image.nativeElement.value,
       available: true,
       // rating: parseInt(this.Rating.nativeElement.value),
-      rating: 5,
+      rating: 0,
       categoryID: this.SelectCat.nativeElement.value,
       images: [
         this.Image1.nativeElement.value,

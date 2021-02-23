@@ -22,26 +22,26 @@
             <div class="card h-100 text-left mt-md-0 mt-3">
               <div class="card-body">
                 <h4 class="card-title" style="font-size: 16px;font-weight: bold;">{{'OrderSummary'|translate}}</h4>
-                <div class="d-flex mt-4">
+                <div class="d-flex mt-4 justify-content-between">
                     <p class="card-text">{{'Subtotal'|translate}}</p>
-                    <p class="card-text ml-auto">{{order?.totalPrice | currency}}</p>
+                    <p class="card-text">{{order?.totalPrice | currency}}</p>
                 </div>
-                <div class="d-flex">
+                <div class="d-flex justify-content-between">
                     <p class="card-text">{{'Items'|translate}}</p>
-                    <p class="card-text ml-auto">{{totalItems()}}</p>
+                    <p class="card-text">{{totalItems()}}</p>
                 </div>
-                <div class="d-flex">
+                <div class="d-flex justify-content-between">
                     <p class="card-text">{{'Tax'|translate}}</p>
-                    <p class="card-text ml-auto">{{applyTax() | currency}}</p>
+                    <p class="card-text">{{applyTax() | currency}}</p>
                 </div>
-                <div class="d-flex">
+                <div class="d-flex justify-content-between">
                     <p class="card-text">{{'Delivery'|translate}}</p>
-                    <p class="card-text ml-auto">{{'Free'|translate}}</p>
+                    <p class="card-text">{{'Free'|translate}}</p>
                 </div>
                 <hr>
-                <div class="d-flex">
+                <div class="d-flex justify-content-between">
                     <p class="card-text" style="font-size: 22px;font-weight: bold;">{{'OrderTotal'|translate}}</p>
-                    <p class="card-text ml-auto">{{(applyTax() + order?.totalPrice) | currency}}</p>
+                    <p class="card-text">{{(applyTax() + order?.totalPrice) | currency}}</p>
                 </div>
               </div>
             </div>
@@ -54,10 +54,10 @@
                 <h4 class="card-title" style="font-size: 16px;font-weight: bold;">{{'Items'|translate}}</h4>
                 <div class="mt-4">
                     <div *ngFor="let item of order?.productsIDs">
-                        <div class="d-flex">
+                        <div class="d-flex justify-content-between">
                             <p class="card-text" style="font-weight: bold;">{{'Qty'|translate}} {{item?.qty}}</p>
-                            <p class="card-text ml-auto align-self-center">{{getProductNameByID(item?.id)}}</p>
-                            <p class="card-text ml-auto align-self-center">{{getProductPriceByID(item?.id) | currency}}</p>
+                            <p class="card-tex align-self-center">{{getProductNameByID(item?.id)}}</p>
+                            <p class="card-text align-self-center">{{getProductPriceByID(item?.id) | currency}}</p>
                         </div>
                     </div>
                 </div>
