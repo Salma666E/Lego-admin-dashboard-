@@ -1,4 +1,4 @@
-<div id="mySidenav" class="sidenav text-justify" dir="auto" #mySidenav>
+<div id="mySidenav" class="sidenav text-justify" #mySidenav>
   <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
   <a class="rounded mt-4">
     <label class="form-control" for="lang" style="font-weight: bold;color: darkblue; display: inline;">{{'Lang'|translate}}: 
@@ -8,25 +8,25 @@
       </select>
     </label>
   </a>
-  <a routerLink="/Admin/Dashboard" routerLinkActive="active" class="rounded">
-    <i class="fas fa-tachometer-alt mr-2"></i> {{'Dashboard'|translate}}
+  <a routerLink="/Admin/Dashboard" routerLinkActive="active" class="rounded text-justify " dir="auto" >
+    <i class="fas fa-tachometer-alt"></i> {{'Dashboard'|translate}}
   </a>
-  <a routerLink="/Admin/Categories" routerLinkActive="active" class="rounded">
+  <a routerLink="/Admin/Categories" routerLinkActive="active" class="rounded text-justify " dir="auto" >
     <i class="fa fa-server mr-2"></i> {{'Categories'|translate}}
   </a>
-  <a routerLink="/Admin/Products" routerLinkActive="active" class="rounded">
+  <a routerLink="/Admin/Products" routerLinkActive="active" class="rounded text-justify " dir="auto" >
     <i class="fas fa-box-open mr-2"></i> {{'Products'|translate}}
   </a>
-  <a routerLink="/Admin/Customers" routerLinkActive="active" class="rounded">
+  <a routerLink="/Admin/Customers" routerLinkActive="active" class="rounded text-justify " dir="auto" >
     <i class="fas fa-users mr-2"></i> {{'Customers'|translate}}
   </a>
-  <a routerLink="/Admin/Orders" routerLinkActive="active" class="rounded">
+  <a routerLink="/Admin/Orders" routerLinkActive="active" class="rounded text-justify " dir="auto" >
     <i class="fas fa-shopping-bag mr-2"></i> {{'Orders'|translate}}
   </a>
   <!-- <a routerLink="/Admin/Admins" routerLinkActive="active" class="rounded">
     <i class="fas fa-user mr-2"></i> Admins
   </a> -->
-  <a (click)="logout()" routerLinkActive="active" class="rounded" role="button">
+  <a (click)="logout()" routerLinkActive="active" class="rounded text-justify " dir="auto"  role="button">
     <i class="fas fa-door-open mr-2"></i> {{'Logout'|translate}}
   </a>
 </div>

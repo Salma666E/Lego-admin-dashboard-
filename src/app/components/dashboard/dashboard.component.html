@@ -1,20 +1,21 @@
 <app-menu></app-menu>
-<div class="row text-justify" dir="auto">
+<div class="row">
     <div class="col p-4 pt-5">
-        <h3 class="font-weight-bold darkBlue">{{'Dashboard'|translate}}</h3>
+        <h3 class="font-weight-bold darkBlue text-justify" dir="auto">{{'Dashboard'|translate}}</h3>
         <div class="row mt-4">
             <div class="col-md-6">
                 <div class="card h-100 dash1">
                     <div class="card-body text-white">
-                        <div class="d-flex">
-                            <div>
-                                <h2 class="font-weight-bold">{{totalOrds|number}}</h2>
+                        <div class="d-flex justify-content-between " dir="auto">
+                            <div class="text-justify">
+                                <h2 class="font-weight-bold" >{{totalOrds|number}}</h2>
                                 <p><small class="font-weight-bold">{{'Orders'|translate}}</small></p>
                             </div>
-                            <div class="align-self-center ml-auto">
-                                <i class="fa fa-shopping-bag fa-4x dashIcons" aria-hidden="true"></i>
+                            <div >
+                                <i class="fa fa-shopping-bag fa-4x dashIcons" aria-hidden="true" dir="auto"></i>
                             </div>
                         </div>
+
                     </div>
                     <div class="text-center dash1Bottom">
                         <a name="" id="" class="btn moreInfoBtn text-white shadow-none"
@@ -26,12 +27,12 @@
             <div class="col-md-6 mt-3 mt-md-0">
                 <div class="card h-100 dash2">
                     <div class="card-body text-white">
-                        <div class="d-flex">
-                            <div>
+                        <div class="d-flex justify-content-between " dir="auto">
+                            <div class="text-justify">
                                 <h2 class="font-weight-bold">{{totalPrds|number}}</h2>
                                 <p><small class="font-weight-bold">{{'Products'|translate}}</small></p>
                             </div>
-                            <div class="align-self-center ml-auto">
+                            <div >
                                 <i class="fas fa-box-open fa-4x dashIcons" aria-hidden="true"></i>
                             </div>
                         </div>
@@ -48,12 +49,12 @@
             <div class="col-md-6">
                 <div class="card h-100 dash3">
                     <div class="card-body text-white">
-                        <div class="d-flex">
-                            <div>
+                        <div class="d-flex justify-content-between " dir="auto">
+                            <div class="text-justify">
                                 <h2 class="font-weight-bold">{{totalCusts}}</h2>
                                 <p><small class="font-weight-bold">{{'Customers'|translate}}</small></p>
                             </div>
-                            <div class="align-self-center ml-auto">
+                            <div >
                                 <i class="fas fa-user fa-4x dashIcons" aria-hidden="true"></i>
                             </div>
                         </div>
@@ -68,12 +69,12 @@
             <div class="col-md-6 mt-3 mt-md-0">
                 <div class="card h-100 dash4">
                     <div class="card-body text-white">
-                        <div class="d-flex">
-                            <div>
+                        <div class="d-flex justify-content-between " dir="auto">
+                            <div class="text-justify">
                                 <h2 class="font-weight-bold">{{totalCats}}</h2>
                                 <p><small class="font-weight-bold">{{'Categories'|translate}}</small></p>
                             </div>
-                            <div class="align-self-center ml-auto">
+                            <div >
                                 <i class="fa fa-server fa-4x dashIcons" aria-hidden="true"></i>
                             </div>
                         </div>
@@ -149,16 +150,16 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body targetTxt">
-                        <h5 class="card-title font-weight-bold">{{'TargetSales'|translate}}</h5>
-                        <p class="card-text targetSubTxt">{{'Totalperformance'|translate}}</p>
+                        <h5 class="card-title font-weight-bold text-justify" dir="auto">{{'TargetSales'|translate}}</h5>
+                        <p class="card-text targetSubTxt text-justify" dir="auto">{{'Totalperformance'|translate}}</p>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="card">
                                     <div class="card-body">
-                                        <div class="d-flex">
+                                        <div class="d-flex justify-content-between " dir="auto">
                                             <h5 class="card-title font-weight-bold align-self-center m-0">{{"Orders"|translate}}
                                             </h5>
-                                            <div class="ml-auto">
+                                            <div>
                                                 <span
                                                     class="text-right font-weight-bold align-self-center target">
                                                     {{totalOrds}}</span>
@@ -169,9 +170,9 @@
                                                 style="width: 20%" aria-valuenow="20" aria-valuemin="0"
                                                 aria-valuemax="100"></div>
                                         </div>
-                                        <div class="d-flex mt-2">
+                                        <div class="d-flex justify-content-between " dir="auto">
                                             <p class="targetSubTxt">{{'MonthlyTarget'|translate}}</p>
-                                            <div class="ml-auto">
+                                            <div >
                                                 <span class="text-right targetSubTxt">
                                                     100%</span>
                                             </div>
@@ -182,10 +183,10 @@
                             <div class="col-md-6 mt-md-0 mt-3">
                                 <div class="card">
                                     <div class="card-body">
-                                        <div class="d-flex">
+                                        <div class="d-flex justify-content-between " dir="auto">
                                             <h5 class="card-title font-weight-bold align-self-center m-0">{{'Income'|translate}}
                                             </h5>
-                                            <div class="ml-auto">
+                                            <div>
                                                 <span
                                                     class="text-right font-weight-bold align-self-center target">
                                                     $2797</span>
@@ -196,9 +197,9 @@
                                                 style="width: 70%" aria-valuenow="70" aria-valuemin="0"
                                                 aria-valuemax="100"></div>
                                         </div>
-                                        <div class="d-flex mt-2">
+                                        <div class="d-flex justify-content-between " dir="auto">
                                             <p class="targetSubTxt">{{'MonthlyTarget'|translate}}</p>
-                                            <div class="ml-auto">
+                                            <div>
                                                 <span class="text-right targetSubTxt">
                                                     100%</span>
                                             </div>
