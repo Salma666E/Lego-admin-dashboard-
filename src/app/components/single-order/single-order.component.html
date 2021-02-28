@@ -56,7 +56,7 @@
                     <div *ngFor="let item of order?.productsIDs">
                         <div class="d-flex justify-content-between">
                             <p class="card-text" style="font-weight: bold;">{{'Qty'|translate}} {{item?.qty}}</p>
-                            <p class="card-tex align-self-center">{{getProductNameByID(item?.id)}}</p>
+                            <p class="card-tex align-self-center">{{getProductNameByID(item?.id, translate.currentLang)}}</p>
                             <p class="card-text align-self-center">{{getProductPriceByID(item?.id) | currency}}</p>
                         </div>
                     </div>

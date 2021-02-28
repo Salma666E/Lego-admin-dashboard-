@@ -1,6 +1,9 @@
 export class CategoryModel {
     id?: any;
     name: string;
+    arabicName: string;
+    arabicDescription: string;
     description: string;
-    totalOrdered?: number;
+    logo: string;
+    totalOrdered: number;
 }

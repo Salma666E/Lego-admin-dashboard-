@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { OrdersService } from 'src/app/firebaseServices/Order/orders.service';
 import { ProductsService } from 'src/app/firebaseServices/Product/products.service';
@@ -20,7 +21,8 @@ export class SingleOrderComponent implements OnInit {
 
   constructor(private activatedroute: ActivatedRoute,
     private orderSrv: OrdersService, private customerSrv: UsersService,
-    private prdSrv: ProductsService, private router: Router) { }
+    private prdSrv: ProductsService, private router: Router,
+    public translate: TranslateService) { }
 
   ngOnInit(): void {
     this.activatedroute.paramMap.subscribe((params: ParamMap) => {
@@ -75,12 +77,16 @@ export class SingleOrderComponent implements OnInit {
     return `${x?.displayName}`
   }
 
-  getProductNameByID(id:any) : string {
+  getProductNameByID(id:any, lang:string) : string {
     let x = this.productList?.find(element=> element.id == id);
-    return `${x?.name}`
+    if(lang === 'en') {
+      return `${x?.name}`
+    } else {
+      return `${x?.arabicName}`
+    }
   }
 
-  getProductPriceByID(id:any) : string {
+  getProductPriceByID(id:any, lang:string) : string {
     let x = this.productList?.find(element=> element.id == id);
     return `${x?.price}`
   }

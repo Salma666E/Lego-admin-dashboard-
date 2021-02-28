@@ -25,6 +25,7 @@ export class EditProductComponent implements OnInit {
   // @ViewChild('Rating') Rating: ElementRef = new ElementRef('input');
   @ViewChild('Available') Available: ElementRef = new ElementRef('input');
   @ViewChild('description') description: ElementRef = new ElementRef('input');
+  @ViewChild('ArabicDescription') ArabicDescription: ElementRef = new ElementRef('input');
   @ViewChild('Stock') Stock: ElementRef = new ElementRef('input');
   @ViewChild('Image') Image: ElementRef = new ElementRef('input');
   @ViewChild('Image') Image1: ElementRef = new ElementRef('input');
@@ -32,6 +33,8 @@ export class EditProductComponent implements OnInit {
   @ViewChild('Image') Image3: ElementRef = new ElementRef('input');
   @ViewChild('Price') Price: ElementRef = new ElementRef('input');
   @ViewChild('Name') Name: ElementRef = new ElementRef('input');
+  @ViewChild('Related') Related: ElementRef = new ElementRef('input');
+  @ViewChild('ArabicName') ArabicName: ElementRef = new ElementRef('input');
   constructor(private router: Router, private prdSrv: ProductsService,
     private catSrv: CategoriesService, private activatedroute: ActivatedRoute) {
   }
@@ -64,7 +67,9 @@ export class EditProductComponent implements OnInit {
     //   this.Avail = false;
     this.newProduct = {
       name: this.Name.nativeElement.value,
+      arabicName: this.ArabicName.nativeElement.value,
       description: this.description.nativeElement.value,
+      arabicDescription: this.ArabicDescription.nativeElement.value,
       price: parseFloat(this.Price.nativeElement.value),
       stock: parseInt(this.Stock.nativeElement.value),
       image: this.Image.nativeElement.value,
@@ -72,6 +77,9 @@ export class EditProductComponent implements OnInit {
       // rating: parseInt(this.Rating.nativeElement.value),
       rating: this.product.rating,
       categoryID: this.SelectCat.nativeElement.value,
+      relatedProducts: [
+        this.Related.nativeElement.value,
+      ],
       images: [
         this.Image1.nativeElement.value,
         this.Image2.nativeElement.value,

@@ -34,20 +34,21 @@
             </thead>
             <tbody>
               <tr *ngFor="let item of productList">
-                <th scope="row">#{{item.id}}</th>
-                <!-- <td><img [src]="item.image" width="50px" height="50px" alt="image"></td> -->
-                <td class="name text-truncate">{{item.name}}</td>
-                <td class="price"><small class="font-weight-bold">{{item.price|currency}}</small></td>
-                <td class="stock"><small>{{item.stock}}</small></td>
+                <th scope="row">#{{item?.id}}</th>
+                <!-- <td><img [src]="item?.image" width="50px" height="50px" alt="image"></td> -->
+                <td *ngIf="translate.currentLang=='en'" class="name text-truncate">{{item?.name}}</td>
+                <td *ngIf="translate.currentLang=='ar'" class="name text-truncate">{{item?.arabicName}}</td>
+                <td class="price"><small class="font-weight-bold">{{item?.price|currency}}</small></td>
+                <td class="stock"><small>{{item?.stock}}</small></td>
                 <td class="stock text-truncate">
-                    <i *ngFor="let i of [].constructor(item.rating)" class="fa fa-star text-warning" aria-hidden="true"></i>
+                    <i *ngFor="let i of [].constructor(item?.rating)" class="fa fa-star text-warning" aria-hidden="true"></i>
                 </td>
-                <td class="category"><small>{{getCategoryNameByID(item.categoryID)}}</small></td>
+                <td class="category"><small>{{getCategoryNameByID(item?.categoryID, translate.currentLang)}}</small></td>
                 <td class="d-flex">
-                  <button type="button" class="btn shadow-none darkBlue" (click)="goToProduct(item.id)"><i class="fa fa-eye"
+                  <button type="button" class="btn shadow-none darkBlue" (click)="goToProduct(item?.id)"><i class="fa fa-eye"
                       aria-hidden="true"></i></button>
 
-                  <button type="button" (click)="deleteProduct(item.id)" class="btn shadow-none darkBlue"><i
+                  <button type="button" (click)="deleteProduct(item?.id)" class="btn shadow-none darkBlue"><i
                       class="fa fa-trash" aria-hidden="true"></i></button>
                 
                   <button type="button" (click)="goToEdit(item?.id)" class="btn shadow-none darkBlue"><i class="fas fa-edit"

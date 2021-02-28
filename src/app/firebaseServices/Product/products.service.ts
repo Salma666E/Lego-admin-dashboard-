@@ -30,7 +30,11 @@ export class ProductsService {
         name: prd.name,
         price: prd.price,
         rating: prd.rating,
-        stock: prd.stock
+        stock: prd.stock,
+        arabicDescription: prd.arabicDescription,
+        arabicName: prd.arabicName,
+        images: prd.images,
+        relatedProducts: prd.relatedProducts,
       }
 
       return userRef.set(userState, {

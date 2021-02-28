@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 
 import { CategoriesService } from 'src/app/firebaseServices/Category/categories.service';
@@ -13,7 +14,8 @@ export class CategoriesComponent implements OnInit, OnDestroy {
 
   categoryList = [];
   subscription: Subscription[] = [];
-  constructor(private catSrv:CategoriesService, private router:Router) { }
+  constructor(private catSrv:CategoriesService, private router:Router,
+    public translate: TranslateService) { }
 
   ngOnInit(): void {
     this.subscription.push(this.catSrv.getCategories().subscribe(data => {

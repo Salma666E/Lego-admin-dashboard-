@@ -1,66 +1,88 @@
 <app-menu></app-menu>
 <div class="container my-4 text-justify" dir="auto">
     <form #frm="ngForm">
-       <div class="form-group">
-           <label for="proName">{{'ProductName'|translate}}</label>
-           <input type="text" class="form-control" id="proName" placeholder="{{'Enterproductname'|translate}}" #Name>
-           <p class="mt-2" style="color: gray;">{{'Current'|translate}} {{product?.name}}</p>
-       </div>
-       <div class="form-group">
-           <label for="proDesc">{{'ProductDescription'|translate}}</label>
-           <input type="text" class="form-control" id="proDesc" placeholder="{{'Enterproductdescription'|translate}}" #description>
-           <p class="mt-2" style="color: gray;">{{'Current'|translate}} {{product?.description}}</p>
+        <div class="form-group">
+            <label for="proName">{{'ProductName'|translate}}</label>
+            <input type="text" class="form-control" id="proName" placeholder="{{'Enterproductname'|translate}}" #Name>
+            <p class="mt-2" style="color: gray;">{{'Current'|translate}} {{product?.name}}</p>
         </div>
-       <div class="form-group">
-           <label for="proPrice">{{'ProductPrice'|translate}}</label>
-           <input type="number" class="form-control" id="proPrice" placeholder="{{'Enterproductprice'|translate}}" #Price>
-           <p class="mt-2" style="color: gray;">{{'Current'|translate}} {{product?.price}}</p>
+        <div class="form-group">
+            <label for="proArabicName">{{'ArabicProductName'|translate}}</label>
+            <input type="text" class="form-control" id="proArabicName" placeholder="{{'Enterproductname'|translate}}"
+                #ArabicName>
+            <p class="mt-2" style="color: gray;">{{'Current'|translate}} {{product?.arabicName}}</p>
         </div>
-       <div class="form-group">
-           <label for="proStockproStock">{{'ProductStock'|translate}}</label>
-           <input type="number" class="form-control" id="proStock" placeholder="{{'Enterproductstock'|translate}}" #Stock>
-           <p class="mt-2" style="color: gray;">{{'Current'|translate}} {{product?.stock}}</p>
-        </div> 
-       <!-- <div class="form-group">
+        <div class="form-group">
+            <label for="proDesc">{{'ProductDescription'|translate}}</label>
+            <input type="text" class="form-control" id="proDesc" placeholder="{{'Enterproductdescription'|translate}}"
+                #description>
+            <p class="mt-2" style="color: gray;">{{'Current'|translate}} {{product?.description}}</p>
+        </div>
+        <div class="form-group">
+            <label for="proArabicDesc">{{'ArabicProductDescription'|translate}}</label>
+            <input type="text" class="form-control" id="proArabicDesc" placeholder="{{'Enterproductdescription'|translate}}"
+                #ArabicDescription>
+            <p class="mt-2" style="color: gray;">{{'Current'|translate}} {{product?.arabicDescription}}</p>
+        </div>
+        <div class="form-group">
+            <label for="related">{{'Related'|translate}}</label>
+            <input type="text" class="form-control" id="related" placeholder="{{'Related'|translate}}"
+                #Related>
+            <p class="mt-2" style="color: gray;">{{'Current'|translate}} {{product?.relatedProducts}}</p>
+        </div>
+        <div class="form-group">
+            <label for="proPrice">{{'ProductPrice'|translate}}</label>
+            <input type="number" class="form-control" id="proPrice" placeholder="{{'Enterproductprice'|translate}}"
+                #Price>
+            <p class="mt-2" style="color: gray;">{{'Current'|translate}} {{product?.price}}</p>
+        </div>
+        <div class="form-group">
+            <label for="proStockproStock">{{'ProductStock'|translate}}</label>
+            <input type="number" class="form-control" id="proStock" placeholder="{{'Enterproductstock'|translate}}"
+                #Stock>
+            <p class="mt-2" style="color: gray;">{{'Current'|translate}} {{product?.stock}}</p>
+        </div>
+        <!-- <div class="form-group">
            <label for="proRating">Product Rating</label>
            <input type="number" class="form-control" id="proRating" placeholder="Enter product rating" #Rating>
        </div> -->
-       <div class="form-group">
-           <label for="image">{{'PathImage'|translate}}</label>
-           <input type="text" class="form-control" id="image"  placeholder="{{'EnterPathImage'|translate}}" #Image>
-           <p class="mt-2" style="color: gray;">{{'Current'|translate}} {{product?.image}}</p>
+        <div class="form-group">
+            <label for="image">{{'PathImage'|translate}}</label>
+            <input type="text" class="form-control" id="image" placeholder="{{'EnterPathImage'|translate}}" #Image>
+            <p class="mt-2" style="color: gray;">{{'Current'|translate}} {{product?.image}}</p>
         </div>
         <div class="form-group">
             <label for="image1">{{'SubImage1'|translate}}</label>
-            <input type="text" class="form-control" id="image1"  placeholder="{{'EnterSubImage1'|translate}}" #Image1>
+            <input type="text" class="form-control" id="image1" placeholder="{{'EnterSubImage1'|translate}}" #Image1>
             <p class="mt-2" style="color: gray;">{{'Current'|translate}} {{product?.images[0]}}</p>
-         </div>
-         <div class="form-group">
+        </div>
+        <div class="form-group">
             <label for="image2">{{'SubImage2'|translate}}</label>
-            <input type="text" class="form-control" id="image2"  placeholder="{{'EnterSubImage2'|translate}}" #Image2>
+            <input type="text" class="form-control" id="image2" placeholder="{{'EnterSubImage2'|translate}}" #Image2>
             <p class="mt-2" style="color: gray;">{{'Current'|translate}} {{product?.images[1]}}</p>
-         </div>
-         <div class="form-group">
+        </div>
+        <div class="form-group">
             <label for="image3">{{'SubImage3'|translate}}</label>
-            <input type="text" class="form-control" id="image3"  placeholder="{{'EnterSubImage3'|translate}}" #Image2>
+            <input type="text" class="form-control" id="image3" placeholder="{{'EnterSubImage3'|translate}}" #Image2>
             <p class="mt-2" style="color: gray;">{{'Current'|translate}} {{product?.images[2]}}</p>
-         </div>
-       <!-- Available  -->
-       <!-- <div class="custom-control custom-switch">
+        </div>
+        <!-- Available  -->
+        <!-- <div class="custom-control custom-switch">
            <input type="checkbox" class="custom-control-input" id="Available" name="Available" #Available>
            <label class="custom-control-label" for="Available">Available</label>
        </div> -->
-       <!-- End Avalable -->
-       <div class="form-group">
-           <label>{{'SelectCategory'|translate}} </label>
-           <select class="form-control" #SelectCat>
-               <option *ngFor="let cat of CategoryList" [value]="cat.id">{{cat.name}}</option>
-           </select>
+        <!-- End Avalable -->
+        <div class="form-group">
+            <label>{{'SelectCategory'|translate}} </label>
+            <select class="form-control" #SelectCat>
+                <option *ngFor="let cat of CategoryList" [value]="cat.id">{{cat.name}}</option>
+            </select>
         </div>
 
-       <div class="form-group">
-           <button class="btn btn-dark" [disabled]="frm.invalid" (click)="editProduct()">{{'EditProduct'|translate}}</button>
-       </div>
-   </form>   
+        <div class="form-group">
+            <button class="btn btn-dark" [disabled]="frm.invalid"
+                (click)="editProduct()">{{'EditProduct'|translate}}</button>
+        </div>
+    </form>
 
 </div>

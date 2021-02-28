@@ -1,17 +1,33 @@
 <app-menu></app-menu>
 <div class="container my-4 text-justify" dir="auto">
     <form #frm="ngForm">
-       <div class="form-group">
-           <label for="catName">{{'CategoryName'|translate}}</label>
-           <input type="text" class="form-control"  id="catName" placeholder="{{'EnterCategoryname'|translate}}" #Name>
-       </div>
-       <div class="form-group">
-           <label for="catDescription">{{'CategoryDescription'|translate}}</label>
-           <input type="text" class="form-control"  id="catDescription" placeholder="{{'EnterCategoryDescription'|translate}}" #Description>
-       </div>
-       <div class="form-group">
-           <button class="btn btn-success"  [disabled]="frm.invalid" (click)="addCategory()">{{'AddCategory'|translate}}</button>
-       </div>
-   </form>   
+        <div class="form-group">
+            <label for="catName">{{'CategoryName'|translate}}</label>
+            <input type="text" class="form-control" id="catName" placeholder="{{'EnterCategoryname'|translate}}" #Name>
+        </div>
+        <div class="form-group">
+            <label for="catArabicName">{{'CategoryArabicName'|translate}}</label>
+            <input type="text" class="form-control" id="catArabicName" placeholder="{{'EnterCategoryname'|translate}}" #ArabicName>
+        </div>
+        <div class="form-group">
+            <label for="catDescription">{{'CategoryDescription'|translate}}</label>
+            <input type="text" class="form-control" id="catDescription"
+                placeholder="{{'EnterCategoryDescription'|translate}}" #Description>
+        </div>
+        <div class="form-group">
+            <label for="catArabicDescription">{{'CategoryArabicDescription'|translate}}</label>
+            <input type="text" class="form-control" id="catArabicDescription"
+                placeholder="{{'EnterCategoryDescription'|translate}}" #ArabicDescription>
+        </div>
+        <div class="form-group">
+            <label for="logo">{{'Logo'|translate}}</label>
+            <input type="text" class="form-control" id="logo"
+                placeholder="{{'EnterLogo'|translate}}" #Logo>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-success" [disabled]="frm.invalid"
+                (click)="addCategory()">{{'AddCategory'|translate}}</button>
+        </div>
+    </form>
 
 </div>

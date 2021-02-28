@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { CategoriesService } from 'src/app/firebaseServices/Category/categories.service';
 import { ProductsService } from 'src/app/firebaseServices/Product/products.service';
@@ -16,7 +17,7 @@ export class ProductsComponent implements OnInit {
   subscription: Subscription[] = [];
 
   constructor(private prdSrv:ProductsService, private catSrv:CategoriesService,
-              private router:Router) { }
+              private router:Router, public translate: TranslateService) { }
 
   ngOnInit(): void {
     this.subscription.push(this.prdSrv.getProducts().subscribe(data => {
@@ -54,9 +55,13 @@ export class ProductsComponent implements OnInit {
     this.router.navigate(['Admin/AddProduct']);
   }
 
-  getCategoryNameByID(id:number) : string {
+  getCategoryNameByID(id:number, lang:string) : string {
     let x = this.categoryList?.find(element=> element.id == id);
-    return `${x?.name}`
+    if(lang === 'en') {
+      return `${x?.name}`
+    } else {
+      return `${x?.arabicName}`
+    }
   }
 
 }

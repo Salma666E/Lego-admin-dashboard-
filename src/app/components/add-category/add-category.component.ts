@@ -13,7 +13,10 @@ export class AddCategoryComponent implements OnInit {
   newCategory:CategoryModel;
   subscription: Subscription[] = [];
   @ViewChild('Description') Description: ElementRef = new ElementRef('input');
+  @ViewChild('ArabicDescription') ArabicDescription: ElementRef = new ElementRef('input');
   @ViewChild('Name') Name: ElementRef = new ElementRef('input');
+  @ViewChild('ArabicName') ArabicName: ElementRef = new ElementRef('input');
+  @ViewChild('Logo') Logo: ElementRef = new ElementRef('input');
   constructor(private router: Router, private catService: CategoriesService) {
   }
 
@@ -24,7 +27,10 @@ export class AddCategoryComponent implements OnInit {
     
     this.newCategory = {
       name: this.Name.nativeElement.value,
+      arabicName: this.ArabicName.nativeElement.value,
       description: this.Description.nativeElement.value,
+      arabicDescription: this.ArabicDescription.nativeElement.value,
+      logo: this.Logo.nativeElement.value,
       totalOrdered: 0
     };
     this.catService.createCategory(this.newCategory);
