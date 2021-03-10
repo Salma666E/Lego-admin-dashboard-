@@ -1,33 +1,79 @@
 <app-menu></app-menu>
 <div class="container my-4 text-justify" dir="auto">
-    <form #frm="ngForm">
+    <form #frm="ngForm" (ngSubmit)="addCategory()">
         <div class="form-group">
             <label for="catName">{{'CategoryName'|translate}}</label>
-            <input type="text" class="form-control" id="catName" placeholder="{{'EnterCategoryname'|translate}}" #Name>
+            <input type="text" class="form-control" id="catName" required class="form-control" aria-describedby="helpId"
+            #catName="ngModel" [class.is-invalid]="catName.invalid && catName.touched" [(ngModel)]="newCategory.name"
+             minlength="2" name="Name" [class.is-valid]="catName.valid" placeholder="{{'EnterCategoryname'|translate}}" #Name>
+          <small [hidden]="catName.valid || catName.untouched" id="helpId" class="text-muted alert alert-danger">{{'CategoryName'|translate}} {{'mustBeLetters'|translate}}</small>
         </div>
+        
         <div class="form-group">
             <label for="catArabicName">{{'CategoryArabicName'|translate}}</label>
-            <input type="text" class="form-control" id="catArabicName" placeholder="{{'EnterCategoryname'|translate}}" #ArabicName>
+            <input type="text" class="form-control" id="catArabicName" required aria-describedby="helpId"
+            #catArabicName="ngModel" [class.is-invalid]="catArabicName.invalid && catArabicName.touched" [(ngModel)]="newCategory.arabicName"
+            minlength="2" name="ArabicName" [class.is-valid]="catArabicName.valid" placeholder="{{'EnterCategoryname'|translate}}" #ArabicName>
+          <small [hidden]="catArabicName.valid || catArabicName.untouched" id="helpId" class="text-muted alert alert-danger">{{'CategoryArabicName'|translate}} {{'mustBeLetters'|translate}}</small>
         </div>
         <div class="form-group">
             <label for="catDescription">{{'CategoryDescription'|translate}}</label>
-            <input type="text" class="form-control" id="catDescription"
+            <input type="text" class="form-control" id="catDescription" required aria-describedby="helpId"
+            #catDescription="ngModel" [class.is-invalid]="catDescription.invalid && catDescription.touched" [(ngModel)]="newCategory.description"
+            minlength="2" name="Description" [class.is-valid]="catDescription.valid" placeholder="{{'EnterCategoryDescription'|translate}}" #Description>
+          <small [hidden]="catDescription.valid || catDescription.untouched" id="helpId" class="text-muted alert alert-danger">{{'CategoryDescription'|translate}} {{'mustBeLetters'|translate}}</small>
+        </div>
+        <div class="form-group">
+            <label for="catArabicDescription">{{'CategoryArabicDescription'|translate}}</label>
+            <input type="text" class="form-control" id="catArabicDescription" required aria-describedby="helpId"
+            #catArabicDescription="ngModel" [class.is-invalid]="catArabicDescription.invalid && catName.touched" [(ngModel)]="newCategory.arabicDescription"
+            minlength="2" name="ArabicDescription" [class.is-valid]="catArabicDescription.valid" placeholder="{{'EnterCategoryDescription'|translate}}" #ArabicDescription>
+          <small [hidden]="catArabicDescription.valid || catArabicDescription.untouched" id="helpId" class="text-muted alert alert-danger">{{'CategoryArabicDescription'|translate}} {{'mustBeLetters'|translate}}</small>
+        </div>
+        <div class="form-group">
+            <label for="logo">{{'Logo'|translate}}</label>
+            <input type="text" class="form-control" id="logo" required aria-describedby="helpId"
+            #logo="ngModel" [class.is-invalid]="logo.invalid && logo.touched" [(ngModel)]="newCategory.logo"
+            minlength="2" name="Logo" [class.is-valid]="logo.valid" placeholder="{{'EnterLogo'|translate}}" #Logo>
+          <small [hidden]="logo.valid || logo.untouched" id="helpId" class="text-muted alert alert-danger">{{'Logo'|translate}} {{'mustBeLetters'|translate}}</small>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-success" [disabled]="frm.invalid"
+                >{{'AddCategory'|translate}}</button>
+        </div>
+      </form>
+
+    <!-- <form #frm="ngForm">
+        <div class="form-group">
+            <label for="catName">{{'CategoryName'|translate}}</label>
+            <input type="text" class="form-control" id="catName" required
+            placeholder="{{'EnterCategoryname'|translate}}" #Name>
+        </div>
+        <div class="form-group">
+            <label for="catArabicName">{{'CategoryArabicName'|translate}}</label>
+            <input type="text" class="form-control" id="catArabicName" required
+            placeholder="{{'EnterCategoryname'|translate}}" #ArabicName>
+        </div>
+        <div class="form-group">
+            <label for="catDescription">{{'CategoryDescription'|translate}}</label>
+            <input type="text" class="form-control" id="catDescription" required
                 placeholder="{{'EnterCategoryDescription'|translate}}" #Description>
         </div>
         <div class="form-group">
             <label for="catArabicDescription">{{'CategoryArabicDescription'|translate}}</label>
-            <input type="text" class="form-control" id="catArabicDescription"
+            <input type="text" class="form-control" id="catArabicDescription" required
                 placeholder="{{'EnterCategoryDescription'|translate}}" #ArabicDescription>
         </div>
         <div class="form-group">
             <label for="logo">{{'Logo'|translate}}</label>
-            <input type="text" class="form-control" id="logo"
+            <input type="text" class="form-control" id="logo" required
                 placeholder="{{'EnterLogo'|translate}}" #Logo>
         </div>
         <div class="form-group">
             <button class="btn btn-success" [disabled]="frm.invalid"
                 (click)="addCategory()">{{'AddCategory'|translate}}</button>
         </div>
-    </form>
+    </form> -->
 
 </div>

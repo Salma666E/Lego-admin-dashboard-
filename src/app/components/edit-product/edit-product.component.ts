@@ -37,6 +37,27 @@ export class EditProductComponent implements OnInit {
   @ViewChild('ArabicName') ArabicName: ElementRef = new ElementRef('input');
   constructor(private router: Router, private prdSrv: ProductsService,
     private catSrv: CategoriesService, private activatedroute: ActivatedRoute) {
+      this.newProduct = {
+        name: "",
+        arabicName: "",
+        description: "",
+        arabicDescription: "",
+        price: null,
+        stock: null,
+        image: "",
+        available: true,
+        // rating: parseInt(this.Rating.nativeElement.value),
+        rating: null,
+        categoryID: "",
+        relatedProducts: [
+          ""
+        ],
+        images: [
+          "",
+          "",
+          "",
+        ]
+      };
   }
 
   ngOnInit(): void {
@@ -65,27 +86,27 @@ export class EditProductComponent implements OnInit {
     //   this.Avail = true;
     // else
     //   this.Avail = false;
-    this.newProduct = {
-      name: this.Name.nativeElement.value,
-      arabicName: this.ArabicName.nativeElement.value,
-      description: this.description.nativeElement.value,
-      arabicDescription: this.ArabicDescription.nativeElement.value,
-      price: parseFloat(this.Price.nativeElement.value),
-      stock: parseInt(this.Stock.nativeElement.value),
-      image: this.Image.nativeElement.value,
-      available: true,
-      // rating: parseInt(this.Rating.nativeElement.value),
-      rating: this.product.rating,
-      categoryID: this.SelectCat.nativeElement.value,
-      relatedProducts: [
-        this.Related.nativeElement.value,
-      ],
-      images: [
-        this.Image1.nativeElement.value,
-        this.Image2.nativeElement.value,
-        this.Image3.nativeElement.value
-      ]
-    };
+    // this.newProduct = {
+    //   name: this.Name.nativeElement.value,
+    //   arabicName: this.ArabicName.nativeElement.value,
+    //   description: this.description.nativeElement.value,
+    //   arabicDescription: this.ArabicDescription.nativeElement.value,
+    //   price: parseFloat(this.Price.nativeElement.value),
+    //   stock: parseInt(this.Stock.nativeElement.value),
+    //   image: this.Image.nativeElement.value,
+    //   available: true,
+    //   // rating: parseInt(this.Rating.nativeElement.value),
+    //   rating: this.product.rating,
+    //   categoryID: this.SelectCat.nativeElement.value,
+    //   relatedProducts: [
+    //     this.Related.nativeElement.value,
+    //   ],
+    //   images: [
+    //     this.Image1.nativeElement.value,
+    //     this.Image2.nativeElement.value,
+    //     this.Image3.nativeElement.value
+    //   ]
+    // };
     this.prdSrv.updateProductByID(this.newProduct, this.prdID);
     this.router.navigate(['Admin/Products']);
   }

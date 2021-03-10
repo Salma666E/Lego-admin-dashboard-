@@ -88,5 +88,7 @@
     "Rating":"Rating",
     "Category":"Category",
     "EnterCategoryDescription":"Enter Category Description",
-    "EnterCategoryname":"Enter Category name"
+    "EnterCategoryname":"Enter Category name",
+    "mustBeLetters":"must be more than 2 letters",
+    "MustSelecteCategory":"Must Selecte Category"
 }

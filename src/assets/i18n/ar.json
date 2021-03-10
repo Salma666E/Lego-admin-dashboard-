@@ -88,5 +88,7 @@
     "Rating":"التقييم",
     "Category":"الفئة",
     "EnterCategoryDescription":"أدخل وصف الفئة",
-    "EnterCategoryname":"أدخل اسم الفئة"
+    "EnterCategoryname":"أدخل اسم الفئة",
+    "mustBeLetters":"يجب أن يكون أكثر من حرفين",
+    "MustSelecteCategory":"يجب تحديد الفئة"
 }

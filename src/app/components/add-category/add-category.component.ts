@@ -18,21 +18,22 @@ export class AddCategoryComponent implements OnInit {
   @ViewChild('ArabicName') ArabicName: ElementRef = new ElementRef('input');
   @ViewChild('Logo') Logo: ElementRef = new ElementRef('input');
   constructor(private router: Router, private catService: CategoriesService) {
+    this.newCategory = {name:"",arabicName:"", description: "",arabicDescription:"", logo:"",totalOrdered: 0};
   }
 
   ngOnInit(): void {
     
   }
   addCategory() {
-    
-    this.newCategory = {
-      name: this.Name.nativeElement.value,
-      arabicName: this.ArabicName.nativeElement.value,
-      description: this.Description.nativeElement.value,
-      arabicDescription: this.ArabicDescription.nativeElement.value,
-      logo: this.Logo.nativeElement.value,
-      totalOrdered: 0
-    };
+    // this.newCategory = {name:"mk",arabicName:"", description: "",arabicDescription:"", logo:"",totalOrdered: 0};
+    //  {
+    //   name: this.Name.nativeElement.value,
+    //   arabicName: this.ArabicName.nativeElement.value,
+    //   description: this.Description.nativeElement.value,
+    //   arabicDescription: this.ArabicDescription.nativeElement.value,
+    //   logo: this.Logo.nativeElement.value,
+    //   totalOrdered: 0
+    // };
     this.catService.createCategory(this.newCategory);
     this.router.navigate(['Admin/Categories']);
   }
