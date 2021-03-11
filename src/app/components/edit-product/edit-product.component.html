@@ -107,7 +107,7 @@
         <!-- End Avalable -->
         <div class="form-group">
             <label>{{'SelectCategory'|translate}} </label>
-            <select class="form-control" [(ngModel)]="newProduct.categoryID" #SelectCat>
+            <select class="form-control" [(ngModel)]="newProduct.categoryID" #SelectCat name="catSelect">
                 <option *ngFor="let cat of CategoryList" [value]="cat.id">{{cat.name}}</option>
             </select>
             <small id="helpId" class="text-muted">{{'MustSelecteCategory'|translate}}</small>

@@ -66,6 +66,7 @@ export class EditProductComponent implements OnInit {
       this.prdID = PID;
       this.subscription.push(this.prdSrv.getSpcProduct(this.prdID).subscribe(data => {
         this.product = { id: data.payload.id, ...(data.payload.data() as {}) };
+        this.newProduct.rating = this.product.rating
       })
       )
     });

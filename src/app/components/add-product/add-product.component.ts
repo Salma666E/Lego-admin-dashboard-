@@ -43,7 +43,7 @@ export class AddProductComponent implements OnInit {
       image: "",
       available: true,
       // rating: parseInt(this.Rating.nativeElement.value),
-      rating: null,
+      rating: 0,
       categoryID: "",
       relatedProducts: [
         ""
@@ -69,6 +69,7 @@ export class AddProductComponent implements OnInit {
     this.SelectCat.nativeElement.style.fontWeight = 'bold';
     this.SelectCat.nativeElement.style.backgroundColor = 'lightgray';
   }
+
   addPRODUCT() {
     // console.log("add:"+this.Available.nativeElement.value);
     
